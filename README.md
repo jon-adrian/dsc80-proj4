@@ -1,4 +1,4 @@
-#Early Jungler Advantage in Professional League of Legends
+# Early Jungler Advantage in Professional League of Legends
 
 By Jonathan Adrian
 
