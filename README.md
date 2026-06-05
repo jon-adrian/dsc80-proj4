@@ -7,13 +7,13 @@
 
 ## Introduction
 
-League of Legends is a 5 versus 5 competitive game where each team tries to destroy the opposing team's base. In each game, one player on each team plays the jungle role. Junglers are important because they farm neutral monsters, help teammates through ganks, and influence early-game fights.
+League of Legends is a 5v5 competitive game where each team tries to destroy the opposing team's base. One of the 5 on each team is the 'jungler' role. Junglers are important because they farm neutral monsters, help teammates through surprise attacks, and influence early-game fights.
 
 My central question is:
 
 **How does early-game jungle advantage relate to winning in professional League of Legends?**
 
-I use the 2025 League of Legends esports match dataset from Oracle's Elixir. The original dataset contains **120,456 rows** and **165 columns**. Since my project focuses on junglers, I filtered the data to rows where `position == "jng"`, giving me **20,076 jungler rows**.
+I used the 2025 League of Legends esports match dataset from Oracle's Elixir. The original dataset contains **120,456 rows** and **165 columns**. Since my project focuses on junglers, I filtered the data to rows where `position == "jng"`, giving me **20,076 jungler rows**.
 
 The main response variable is `result`, where `1` means the jungler's team won and `0` means the jungler's team lost. The main explanatory variables are early-game statistics at 15 minutes, including `golddiffat15`, `xpdiffat15`, `csdiffat15`, `killsat15`, `assistsat15`, and `deathsat15`.
 
@@ -21,7 +21,7 @@ The main response variable is `result`, where `1` means the jungler's team won a
 
 ## Data Cleaning and Exploratory Data Analysis
 
-For data cleaning, I filtered the original dataset to only include jungler rows. I selected columns related to match identity, player identity, match result, and early-game jungle performance. I also created a readable `result_label` column where `1` is labeled as `"Win"` and `0` is labeled as `"Loss"`. Finally, I dropped rows with missing values in the main early-game columns used for my analysis.
+For data cleaning, I filtered the original dataset to only include the jungler rows. I picked columns related to match identity, player identity, match result, and early-game jungle performance. I also created a readable `result_label` column where `1` is labeled as `"Win"` and `0` is labeled as `"Loss"`. Finally, I dropped rows with missing values in the main early-game columns used for my analysis.
 
 After cleaning, the dataset contained **18,442 rows** and **20 columns**.
 
