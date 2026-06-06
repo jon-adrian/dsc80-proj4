@@ -7,35 +7,35 @@
 
 ## Introduction
 
-League of Legends is a 5v5 competitive game where each team tries to destroy the opposing team's base. One of the 5 on each team is the 'jungler' role. Junglers are important because they farm neutral monsters, help teammates through surprise attacks, and influence early-game fights.
+League of Legends is a 5v5 competitive game where each team tries to destroy the opposing team's base. One of the 5 on each team is the 'jungler' role. The jungler role is really important because they farm neutral monsters, help teammates through surprise attacks, and influence early-game fights.
 
-My central question is:
+My central question I am trying to answer is:
 
 **How does early-game jungle advantage relate to winning in professional League of Legends?**
 
-I used the 2025 League of Legends esports match dataset from Oracle's Elixir. The original dataset contains **120,456 rows** and **165 columns**. Since my project focuses on junglers, I filtered the data to rows where `position == "jng"`, giving me **20,076 jungler rows**.
+To answer this, I used the 2025 League of Legends esports match dataset from Oracle's Elixir. The original dataset has **120,456 rows** and **165 columns**. Because my project focuses specifically on junglers, I filtered the data to rows where `position == "jng"`, which gave me **20,076 jungler rows**.
 
-The main response variable is `result`, where `1` means the jungler's team won and `0` means the jungler's team lost. The main explanatory variables are early-game statistics at 15 minutes, including `golddiffat15`, `xpdiffat15`, `csdiffat15`, `killsat15`, `assistsat15`, and `deathsat15`.
+The main response variable I used is `result`, which has value `1` when the jungler's team won and `0` when the jungler's team lost. The main explanatory variables I will use are early-game statistics at 15 minutes, including `golddiffat15`, `xpdiffat15`, `csdiffat15`, `killsat15`, `assistsat15`, and `deathsat15`.
 
 ---
 
 ## Data Cleaning and Exploratory Data Analysis
 
-For data cleaning, I filtered the original dataset to only include the jungler rows. I picked columns related to match identity, player identity, match result, and early-game jungle performance. I also created a readable `result_label` column where `1` is labeled as `"Win"` and `0` is labeled as `"Loss"`. Finally, I dropped rows with missing values in the main early-game columns used for my analysis.
+For data cleaning, I filtered the original dataset to only include the jungler rows. I picked columns related to match identification, player identification, the match result, and early-game jungle performance. I also created a readable `result_label` column using the `result` variable where `1` is labeled as `"Win"` and `0` is labeled as `"Loss"`. Finally, I dropped rows with missing values in the main early-game columns used for my analysis.
 
-After cleaning, the dataset contained **18,442 rows** and **20 columns**.
+After cleaning, the dataset now had **18,442 rows** and **20 columns**.
 
 ### Distribution of Jungler Gold Difference at 15 Minutes
 
 <iframe src="assets/gold_diff_distribution.html" width="800" height="500" frameborder="0"></iframe>
 
-This histogram shows the distribution of `golddiffat15`, which measures how much more or less gold a jungler has compared to the opposing jungler at 15 minutes. Values above 0 mean the jungler is ahead, while values below 0 mean the jungler is behind. The distribution is centered around 0, which makes sense because each game has one jungler ahead and one jungler behind relative to the opponent.
+The histogram shows the distribution of `golddiffat15`, which measures how much more or less gold a jungler has compared to the opposing jungler at 15 minutes. Positive values (above 0) mean the jungler is ahead, while negative values (below 0) mean the jungler is behind. The distribution is centered around 0, which makes sense because each game should have one jungler ahead and one jungler behind relative to the opponent.
 
 ### Jungler Gold Difference by Match Result
 
 <iframe src="assets/gold_diff_by_result.html" width="800" height="500" frameborder="0"></iframe>
 
-This box plot compares jungler gold difference at 15 minutes between winning and losing teams. Winning junglers tend to have higher `golddiffat15` values than losing junglers, suggesting that early jungle gold advantage is associated with winning.
+The box plot compares jungler gold difference at 15 minutes between winning and losing teams. Winning junglers tend to have higher `golddiffat15` values than losing junglers, suggesting that early jungle gold advantage is associated with winning.
 
 ### Grouped Summary Table
 
@@ -44,7 +44,7 @@ This box plot compares jungler gold difference at 15 minutes between winning and
 | Loss | -277.85 | -265.44 | -4.66 | 0.98 | 1.52 | 1.12 |
 | Win | 277.85 | 265.44 | 4.66 | 1.42 | 2.15 | 0.71 |
 
-This grouped table shows that junglers on winning teams have higher average gold, XP, and creep score differences at 15 minutes. They also average more kills and assists while having fewer deaths. This suggests that early jungle advantage is not only about farming resources, but also about fighting impact and avoiding deaths.
+This grouped table shows that junglers on winning teams have higher average gold, XP, and creep score differences at 15 minutes. They also average more kills and assists while having fewer deaths. This suggests that early jungle advantage is not only about farming resources, but also about their impact in fights (more kills and assists) and avoiding dying in fights.
 
 ---
 
