@@ -29,7 +29,7 @@ After this cleaning, the dataset now has **18,442 rows** and **20 columns**.
 
 <iframe src="assets/gold_diff_distribution.html" width="800" height="500" frameborder="0"></iframe>
 
-This histogram shows the distribution of the variable `golddiffat15`, measuring how much gold a jungler has compared to the opposing jungler at the 15 minute mark. If `golddiffat15` is positive (above 0), then the jungler is ahead at 15 minutes in gold, and negative values (below 0) mean the jungler is behind. The distribution is centered around 0, which it should be because each match should dhave one jungler ahead and one jungle behind relative to each other, cancelling each other out at 0.
+This histogram shows the distribution of the variable `golddiffat15`, measuring how much gold a jungler has compared to the opposing jungler at the 15 minute mark. If `golddiffat15` is positive (above 0), then the jungler is ahead at 15 minutes in gold, and negative values (below 0) mean the jungler is behind. The distribution is centered around 0, which it should be because each match should have one jungler ahead and one jungle behind relative to each other, cancelling each other out at 0.
 
 ### Jungler Gold Difference by Match Result
 
@@ -62,7 +62,7 @@ I tested whether the missingness of `golddiffat15` depends on `gamelength` (MAR)
 - **Alternative Hypothesis:** The distribution of `gamelength` is different depending on whether `golddiffat15` is missing.
 - **Test Statistic:** Difference in mean game length.
 
-The observed difference I found was about **27.8 seconds** meaning games with missing `golddiffat15` values were around 27.8 seconds longer on average. A permutation test for this gave a p-value of **0.001**, which is below 0.065. Thus, I can reject the null hypothesis, and this suggests that missingness of `golddiffat15` does depend on `gamelength`.
+The observed difference I found was about **27.8 seconds** meaning games with missing `golddiffat15` values were around 27.8 seconds longer on average. A permutation test for this gave a p-value of **0.001**, which is below 0.05. Thus, I can reject the null hypothesis, and this suggests that missingness of `golddiffat15` does depend on `gamelength`.
 
 ### Missingness vs. Side
 
@@ -90,7 +90,7 @@ For my hypothesis test, I tested whether junglers who are ahead in gold at 15 mi
 
 <iframe src="assets/hypothesis_test.html" width="800" height="500" frameborder="0"></iframe>
 
-The observed difference in winrates (our test statistic) was around **0.286**, which means that junglers ahead in gold at the 15 minute mark had a win rate about **28.6% higher**  than junglers who weren't ahead. After running 1000 repititions of a permutation test, there were no simulations as large as the observed difference, so simulated p-value was < 0.001. 
+The observed difference in winrates (our test statistic) was around **0.286**, which means that junglers ahead in gold at the 15 minute mark had a win rate about **28.6% higher**  than junglers who weren't ahead. After running 1000 repetitions of a permutation test, there were no simulations as large as the observed difference, so simulated p-value was < 0.001. 
 
 Thus, since p < 0.05, we reject the null hypothesis, suggesting that junglers who are ahead in gold at the 15 minute mark are more likely to be on the winning team. This doesn't necessarily prove directly that jungler gold advantages cause teams to win more, but shows a clear association.
 
@@ -138,7 +138,7 @@ The best final model used: `max_depth = 5`, `min_samples_leaf = 10`, and `n_esti
 
 In the end, the final model achieved: **Training accuracy** = 0.674, **Test accuracy** = 0.684.
 
-This was a small improvement ove rthe baseline model, but it still probably means that adding fighting impact was useful. It still doesn't perfectly predict the winner based solely on early game jungler stats. This was pretty expected because League of Legends has so many factors at play besides the jungler's 15 minute stats. However, it being quite significantly better than a guess suggestst that the features analyzed do have a significant impact on the end result of the game.
+This was a small improvement over the baseline model, but it still probably means that adding fighting impact was useful. It still doesn't perfectly predict the winner based solely on early game jungler stats. This was pretty expected because League of Legends has so many factors at play besides the jungler's 15 minute stats. However, it being quite significantly better than a guess suggests that the features analyzed do have a significant impact on the end result of the game.
 
 ---
 
