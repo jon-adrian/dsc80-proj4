@@ -15,13 +15,13 @@ My central question I am trying to answer is:
 
 To answer this, I used the 2025 League of Legends esports match dataset from Oracle's Elixir. The original dataset has **120,456 rows** and **165 columns**. Because my project focuses specifically on junglers, I filtered the data to rows where `position == "jng"`, which gave me **20,076 jungler rows**.
 
-The main response variable I used is `result`, which has value `1` when the jungler's team won and `0` when the jungler's team lost. The main explanatory variables I will use are early-game statistics at 15 minutes, including `golddiffat15`, `xpdiffat15`, `csdiffat15`, `killsat15`, `assistsat15`, and `deathsat15`.
+The main response variable I used is `result`, which has value `1` when the jungler's team won and `0` when the jungler's team lost. The main explanatory variables I used are early-game statistics at 15 minutes, including `golddiffat15`, `xpdiffat15`, `csdiffat15`, `killsat15`, `assistsat15`, and `deathsat15`.
 
 ---
 
 ## Data Cleaning and Exploratory Data Analysis
 
-For data cleaning, I filtered the original dataset to only include the jungler rows. I picked columns related to match identification, player identification, the match result, and early-game jungle performance. I also created a readable `result_label` column using the `result` variable where `1` is labeled as `"Win"` and `0` is labeled as `"Loss"`. Finally, I dropped rows with missing values in the main early-game columns used for my analysis.
+For data cleaning, I filtered the original dataset to only include the jungler rows. I picked columns related to identifying which match was being played, identifying the player playing the match, the match result, and how the jungler performed early-game. I also created a more readable `result_label` column using the `result` variable where `1` is labeled as `"Win"` and `0` is labeled as `"Loss"`. Finally, I dropped rows with missing values in the main early-game columns used for my analysis.
 
 After cleaning, the dataset now had **18,442 rows** and **20 columns**.
 
